@@ -45,9 +45,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.title = @"Chat";
     
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.chatsTableView.estimatedRowHeight = 100;
+    self.chatsTableView.rowHeight = UITableViewAutomaticDimension;
+    NSString *cellIdentifier = @"cell";
+    [self.chatsTableView registerClass:[MessageTableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    self.chatsTableView.delegate = self;
+    self.chatsTableView.dataSource = self;
+
+
+    [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                     target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
 
 
     [self setConstraints];
@@ -64,9 +77,9 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    return 100;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+//    return 100;
+//}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -88,8 +101,7 @@
 {
     
     
-//    Business *business = [self.displayedItems objectAtIndex:indexPath.row];
-//    cell.nameLabel.text = [business name];
+    cell.textLabel.text = [self.messages objectAtIndex:indexPath.row];
 
 }
 
@@ -168,6 +180,23 @@
         }
     }];
 
+}
+
+- (void)refreshTable
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Messages"];
+    [query setLimit: 1000];
+    [query orderByAscending:@"createdAt"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded. The first 100 objects are available in objects
+            self.messages = objects;
+            [self.chatsTableView reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 @end

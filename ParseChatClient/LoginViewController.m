@@ -112,6 +112,8 @@
     self.passwordTextField.layer.borderWidth = 1.0f;
     self.passwordTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [self.passwordTextField.layer setCornerRadius:14.0f];
+    self.passwordTextField.secureTextEntry = YES;
+
     self.passwordTextField.font = [UIFont fontWithName:@"Avenir-Book" size:15];
     self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Enter your password" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
 
