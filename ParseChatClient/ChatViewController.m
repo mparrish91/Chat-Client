@@ -15,6 +15,7 @@
 
 @property(strong,readwrite,nonatomic) UITextField *chatTextField;
 @property(strong,readwrite,nonatomic) UIButton *sendButton;
+@property(nonatomic,strong) UITableView *chatsTableView;
 
 
 @end
@@ -27,6 +28,8 @@
 {
     self.chatTextField = [[UITextField alloc]init];
     self.sendButton = [[UIButton alloc]init];
+    self.chatsTableView = [[UITableView alloc]init];
+
     
     
     if (!(self = [super init]))
@@ -57,7 +60,8 @@
     self.view = view;
     [view addSubview:self.chatTextField];
     [view addSubview:self.sendButton];
-    
+    [view addSubview:self.chatsTableView];
+
     
 }
 
@@ -91,6 +95,14 @@
     [self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
     self.sendButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Book" size:13];
     
+    
+    
+    self.chatsTableView.translatesAutoresizingMaskIntoConstraints = false;
+    [self.chatsTableView.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+    [self.chatsTableView.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.chatsTableView.topAnchor constraintEqualToAnchor:self.chatTextField.bottomAnchor].active = YES;
+    [self.chatsTableView.bottomAnchor constraintEqualToAnchor:margins.bottomAnchor].active = YES;
+    
 
 }
 
@@ -101,6 +113,8 @@
     [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             // The object has been saved.
+            NSLog(@"The object has been saved.");
+
         } else {
             // There was a problem, check error.description
         }
