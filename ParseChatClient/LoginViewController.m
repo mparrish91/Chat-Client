@@ -7,6 +7,8 @@
 //
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "ChatViewController.h"
+
 
 @interface LoginViewController ()
 
@@ -162,6 +164,12 @@
                                     block:^(PFUser *user, NSError *error) {
                                         if (user) {
                                             // Do stuff after successful login.
+                                            
+                                            ChatViewController *chatVC = [[ChatViewController alloc]init];
+                                            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:chatVC];
+                                            
+                                            [self presentViewController:nav animated:true completion:nil];
+                                            
                                         } else {
                                             // The login failed. Check error to see why.
                                             UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Login failed :/"preferredStyle:UIAlertActionStyleCancel];
