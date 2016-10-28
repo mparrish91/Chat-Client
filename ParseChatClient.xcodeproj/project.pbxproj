@@ -10,6 +10,7 @@
 		196742FCBCA6DD04C7075DB5 /* Pods_ParseChatClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31554767ACD51A95C5572BC6 /* Pods_ParseChatClient.framework */; };
 		4218C6CF1DC2EB7B009DEF9C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4218C6CE1DC2EB7B009DEF9C /* LoginViewController.m */; };
 		4218C6D31DC400B5009DEF9C /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4218C6D21DC400B5009DEF9C /* ChatViewController.m */; };
+		4218C6D71DC413AB009DEF9C /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4218C6D61DC413AB009DEF9C /* MessageTableViewCell.m */; };
 		42297AC61DC2664C00BDEAD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 42297AC51DC2664C00BDEAD9 /* main.m */; };
 		42297AC91DC2664C00BDEAD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 42297AC81DC2664C00BDEAD9 /* AppDelegate.m */; };
 		42297AD11DC2664C00BDEAD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42297AD01DC2664C00BDEAD9 /* Assets.xcassets */; };
@@ -23,6 +24,8 @@
 		4218C6CE1DC2EB7B009DEF9C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4218C6D11DC400B5009DEF9C /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		4218C6D21DC400B5009DEF9C /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		4218C6D51DC413AB009DEF9C /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		4218C6D61DC413AB009DEF9C /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		42297AC11DC2664C00BDEAD9 /* ParseChatClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseChatClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42297AC51DC2664C00BDEAD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		42297AC71DC2664C00BDEAD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,6 +59,15 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		4218C6D41DC41395009DEF9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4218C6D51DC413AB009DEF9C /* MessageTableViewCell.h */,
+				4218C6D61DC413AB009DEF9C /* MessageTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		42297AB81DC2664B00BDEAD9 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +89,7 @@
 		42297AC31DC2664C00BDEAD9 /* ParseChatClient */ = {
 			isa = PBXGroup;
 			children = (
+				4218C6D41DC41395009DEF9C /* Views */,
 				4218C6D01DC40099009DEF9C /* ViewControllers */,
 				42297AC71DC2664C00BDEAD9 /* AppDelegate.h */,
 				42297AC81DC2664C00BDEAD9 /* AppDelegate.m */,
@@ -236,6 +249,7 @@
 			files = (
 				42297AC91DC2664C00BDEAD9 /* AppDelegate.m in Sources */,
 				42297AC61DC2664C00BDEAD9 /* main.m in Sources */,
+				4218C6D71DC413AB009DEF9C /* MessageTableViewCell.m in Sources */,
 				4218C6D31DC400B5009DEF9C /* ChatViewController.m in Sources */,
 				4218C6CF1DC2EB7B009DEF9C /* LoginViewController.m in Sources */,
 			);

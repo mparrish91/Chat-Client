@@ -8,6 +8,7 @@
 //
 
 #import "ChatViewController.h"
+#import "MessageTableViewCell.h"
 #import <Parse/Parse.h>
 
 
@@ -16,6 +17,8 @@
 @property(strong,readwrite,nonatomic) UITextField *chatTextField;
 @property(strong,readwrite,nonatomic) UIButton *sendButton;
 @property(nonatomic,strong) UITableView *chatsTableView;
+
+@property(strong,readwrite,nonatomic) NSArray *messages;
 
 
 @end
@@ -50,6 +53,51 @@
     [self setConstraints];
     
 }
+
+
+#pragma mark - TableView
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return self.messages.count;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    return 100;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"cell";
+    MessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier   forIndexPath:indexPath] ;
+    
+    if (cell == nil)
+    {
+        cell = [[MessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    
+    return cell;
+}
+
+//This function is where all the magic happens
+-(void) tableView:(UITableView *) tableView willDisplayCell:(MessageTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+//    Business *business = [self.displayedItems objectAtIndex:indexPath.row];
+//    cell.nameLabel.text = [business name];
+
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+}
+
 
 
 - (void)loadView
