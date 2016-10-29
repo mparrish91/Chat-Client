@@ -61,6 +61,10 @@
 
     [NSTimer scheduledTimerWithTimeInterval:1.0f
                                      target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
+    
+    [self.sendButton addTarget:self
+                          action:@selector(onSendButtonPressed)
+                forControlEvents:UIControlEventTouchUpInside];
 
 
     [self setConstraints];
@@ -75,7 +79,6 @@
     
     return self.messages.count;
 }
-
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
 //    return 100;
@@ -190,7 +193,11 @@
         if (!error) {
             // The find succeeded. The first 100 objects are available in objects
             self.messages = objects;
-            [self.chatsTableView reloadData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.chatsTableView reloadData];
+            });
+
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);

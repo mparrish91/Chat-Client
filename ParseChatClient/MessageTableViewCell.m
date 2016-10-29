@@ -36,7 +36,10 @@
     
     self.messageLabel.translatesAutoresizingMaskIntoConstraints = false;
     [self.messageLabel.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-    [self.messageLabel.centerYAnchor constraintEqualToAnchor:margins.centerYAnchor].active = YES;
+    [self.messageLabel.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+    [self.messageLabel.topAnchor constraintEqualToAnchor:margins.topAnchor].active = YES;
+    [self.messageLabel.bottomAnchor constraintEqualToAnchor:margins.bottomAnchor].active = YES;
+
     self.messageLabel.font = [UIFont fontWithName:@"Avenir-Book" size:11];
     
     
