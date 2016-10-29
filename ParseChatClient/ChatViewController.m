@@ -99,10 +99,9 @@
 //This function is where all the magic happens
 -(void) tableView:(UITableView *) tableView willDisplayCell:(MessageTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    cell.textLabel.text = [self.messages objectAtIndex:indexPath.row];
-
+    PFObject *message = [self.messages objectAtIndex:indexPath.row];
+    NSString *messageText = message[@"text"];
+    cell.textLabel.text = messageText;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
